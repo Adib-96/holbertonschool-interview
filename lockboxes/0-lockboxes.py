@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+'''
+Methode to determine if all the boxes can be opened
+'''
+
+
 def canUnlockAll(boxes):
     '''Function to inlock boxes'''
     unlocked = set([0])
