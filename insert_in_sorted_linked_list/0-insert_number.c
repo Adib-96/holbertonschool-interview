@@ -24,7 +24,8 @@ new_node->next = *head;
 *head = new_node;
 return (new_node);
 }
-listint_t *current = *head;
+listint_t *current;
+current = *head;
 while (current->next != NULL && current->next->n < number)
 {
 current = current->next;
