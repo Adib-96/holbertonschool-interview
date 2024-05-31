@@ -21,6 +21,3 @@ def minOperations(n):
         fact += 1
 
     return n_operation
-
-
-print(minOperations(12))
