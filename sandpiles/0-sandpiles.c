@@ -8,13 +8,11 @@
  */
 void printGrid(int grid[3][3])
 {
-/*
-* return: void
-*/
+int i, j;
 printf("=\n");
-for (int i = 0; i < 3; i++)
+for (i = 0; i < 3; i++)
 {
-for (int j = 0; j < 3; j++)
+for (j = 0; j < 3; j++)
 {
 printf("%d ", grid[i][j]);
 }
@@ -30,9 +28,10 @@ printf("\n");
  */
 int isStable(int grid[3][3])
 {
-for (int i = 0; i < 3; i++)
+int i, j;
+for (i = 0; i < 3; i++)
 {
-for (int j = 0; j < 3; j++)
+for (j = 0; j < 3; j++)
 {
 if (grid[i][j] > 3)
 {
@@ -51,17 +50,18 @@ return (1);
 void topple(int grid[3][3])
 {
 int tempGrid[3][3];
-for (int i = 0; i < 3; i++)
+int i, j;
+for (i = 0; i < 3; i++)
 {
-for (int j = 0; j < 3; j++)
+for (j = 0; j < 3; j++)
 {
 tempGrid[i][j] = grid[i][j];
 }
 }
 
-for (int i = 0; i < 3; i++)
+for (i = 0; i < 3; i++)
 {
-for (int j = 0; j < 3; j++)
+for (j = 0; j < 3; j++)
 {
 if (tempGrid[i][j] > 3)
 {
@@ -95,9 +95,10 @@ grid[i][j + 1]++;
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-for (int i = 0; i < 3; i++)
+int i, j;
+for (i = 0; i < 3; i++)
 {
-for (int j = 0; j < 3; j++)
+for (j = 0; j < 3; j++)
 {
 grid1[i][j] += grid2[i][j];
 }
