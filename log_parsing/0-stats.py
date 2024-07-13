@@ -1,6 +1,28 @@
 #!/usr/bin/python3
-"""script that reads stdin line by line and computes metrics:
 """
+This script reads lines from standard input (stdin) and computes metrics based on HTTP status codes and file sizes.
+
+Functions:
+    parse_line(line): Parses a single line of input to extract and update the file size and status code count.
+    print_stats(): Prints the current metrics including total file size and counts of each status code.
+
+The script handles the following HTTP status codes:
+    - 200
+    - 301
+    - 400
+    - 401
+    - 403
+    - 404
+    - 405
+    - 500
+
+The script prints the accumulated file size and the count of each status code every 10 lines and upon termination (including via a keyboard interrupt).
+
+Usage:
+    The script reads from stdin, so it can be used in a pipeline or with input redirection. For example:
+    $ cat log.txt | ./script.py
+"""
+
 import sys
 
 if __name__ == '__main__':
@@ -16,7 +38,14 @@ if __name__ == '__main__':
     file_size = 0
 
     def parse_line(line):
-        """manipulate data from stdin"""
+        """Parses a single line of input to extract the file size and status code.
+        
+        Args:
+            line (str): A line of input from stdin.
+            
+        Returns:
+            int: The file size from the line, or 0 if parsing fails.
+        """
         try:
             parsed_line = line.split()
             st_code = parsed_line[-2]
@@ -28,8 +57,8 @@ if __name__ == '__main__':
             return 0
 
     def print_stats():
-        """print stats"""
-        print(f"File size : {file_size}")
+        """Prints the accumulated metrics including file size and status code counts."""
+        print(f"File size: {file_size}")
         for key in sorted(status_code.keys()):
             if status_code[key]:
                 print(f"{key}: {status_code[key]}")
