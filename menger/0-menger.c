@@ -25,12 +25,13 @@ return (0);
 void menger(int level)
 {
 int size;
+int x, y;
 if (level < 0)
 return;
 size = pow(3, level);
-for (int y = 0; y < size; y++)
+for (y = 0; y < size; y++)
 {
-for (int x = 0; x < size; x++)
+for (x = 0; x < size; x++)
 {
 if (is_blank(x, y))
 printf(" ");
