@@ -24,9 +24,10 @@ return (0);
  */
 void menger(int level)
 {
+int size;
 if (level < 0)
 return;
-int size = pow(3, level);
+size = pow(3, level);
 for (int y = 0; y < size; y++)
 {
 for (int x = 0; x < size; x++)
