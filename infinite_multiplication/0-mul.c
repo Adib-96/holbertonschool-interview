@@ -1,92 +1,102 @@
-#include <string.h>
+#include "holberton.h"
 #include <stdlib.h>
-#include <stdio.h>
-#include <ctype.h>
-/**
- * _isnumber - checks if string is number
- *
- * @s: string
- *
- * Return: 1 if number, 0 if not
- */
-int _isnumber(char *s)
-{
-	int i, check, d;
 
-	d = 0, check = 1;
-	for (i = 0; *(s + i) != 0; i++)
-	{
-		d = isdigit(*(s + i));
-		if (d == 0)
-		{
-			check = 0;
-			break;
-		}
-	}
-	return (check);
+/**
+ * is_digit - Checks if a string is composed only of digits.
+ * @s: The string to check.
+ *
+ * Return: 1 if all characters are digits, otherwise 0.
+ */
+int is_digit(char *s)
+{
+    int i = 0;
+
+    while (s[i])
+    {
+        if (s[i] < '0' || s[i] > '9')
+            return (0);
+        i++;
+    }
+    return (1);
 }
 
 /**
- * _callocX - reserves memory initialized to 0
+ * _strlen - Returns the length of a string.
+ * @s: The string whose length to check.
  *
- * @nmemb: # of bytes
- *
- * Return: pointer
+ * Return: The length of the string.
  */
-char *_callocX(unsigned int nmemb)
+int _strlen(char *s)
 {
-	unsigned int i;
-	char *p;
+    int length = 0;
 
-	p = malloc(nmemb + 1);
-	if (p == 0)
-		return (0);
-	for (i = 0; i < nmemb; i++)
-		p[i] = '0';
-	p[i] = '\0';
-	return (p);
+    while (s[length])
+        length++;
+    return (length);
 }
 
 /**
- * main - multiplies inf numbers
- *
- * @argc: # of cmd line args
- * @argv: cmd line args
- * Return: No return
+ * print_error_and_exit - Prints error message and exits with status 98.
  */
-int main(int argc, char **argv)
+void print_error_and_exit(void)
 {
-	int i, j, l1, l2, lful, mul, add, ten, ten2, tl, zer = 0;
-	char *res;
+    _putchar('E');
+    _putchar('r');
+    _putchar('r');
+    _putchar('o');
+    _putchar('r');
+    _putchar('\n');
+    exit(98);
+}
 
-	if (argc != 3 || _isnumber(argv[1]) == 0 || _isnumber(argv[2]) == 0)
-		printf("Error\n"), exit(98);
-	if (atoi(argv[1]) == 0 || atoi(argv[2]) == 0)
-		printf("0\n"), exit(0);
-	l1 = strlen(argv[1]), l2 = strlen(argv[2]);
-	lful = l1 + l2;
-	res = _callocX(lful);
-	if (res == 0)
-		printf("Error\n"), exit(98);
-	for (i = l2 - 1; i >= 0; i--)
-	{
-		ten = 0, ten2 = 0;
-		for (j = l1 - 1; j >= 0; j--)
-		{
-			tl = i + j + 1;
-			mul = (argv[1][j] - '0') * (argv[2][i] - '0') + ten;
-			ten = mul / 10;
-			add = (res[tl] - '0') + (mul % 10) + ten2;
-			ten2 = add / 10;
-			res[tl] = (add % 10) + '0';
-		}
-		res[tl - 1] = (ten + ten2) + '0';
-	}
-	if (res[0] == '0')
-		zer = 1;
-	for (; zer < lful; zer++)
-		printf("%c", res[zer]);
-	printf("\n");
-	free(res);
-	return (0);
+/**
+ * main - Multiplies two positive numbers.
+ * @argc: The number of arguments.
+ * @argv: The array of arguments.
+ *
+ * Return: 0 on success, 98 on failure.
+ */
+int main(int argc, char *argv[])
+{
+    char *num1, *num2;
+    int len1, len2, len, i, j, carry, n1, n2, *result;
+
+    if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
+        print_error_and_exit();
+
+    num1 = argv[1];
+    num2 = argv[2];
+    len1 = _strlen(num1);
+    len2 = _strlen(num2);
+    len = len1 + len2;
+
+    result = calloc(len, sizeof(int));
+    if (result == NULL)
+        print_error_and_exit();
+
+    for (i = len1 - 1; i >= 0; i--)
+    {
+        carry = 0;
+        n1 = num1[i] - '0';
+        for (j = len2 - 1; j >= 0; j--)
+        {
+            n2 = num2[j] - '0';
+            carry += result[i + j + 1] + (n1 * n2);
+            result[i + j + 1] = carry % 10;
+            carry /= 10;
+        }
+        result[i + j + 1] += carry;
+    }
+
+    i = 0;
+    while (i < len && result[i] == 0)
+        i++;
+    if (i == len)
+        _putchar('0');
+    while (i < len)
+        _putchar(result[i++] + '0');
+    _putchar('\n');
+
+    free(result);
+    return (0);
 }
