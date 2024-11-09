@@ -2,8 +2,9 @@
 """
 0-count Module
 
-Defines the function `count_words` to query the Reddit API, counting the
-occurrences of specified keywords in the titles of hot posts within a subreddit.
+Defines the function `count_words` to query the Reddit API,
+counting the occurrences of specified keywords in the titles
+of hot posts within a subreddit.
 Results are printed in descending frequency and alphabetically for ties.
 """
 
@@ -12,7 +13,8 @@ import requests
 
 def count_words(subreddit, word_list, after=None, word_count={}):
     headers = {
-        'User-Agent': 'python:holberton.count_words:v1.0 (by /u/holberton_school)'}
+        'User-Agent':
+            'python:holberton.count_words:v1.0 (by /u/holberton_school)'}
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'
     params = {'after': after, 'limit': 100}
 
