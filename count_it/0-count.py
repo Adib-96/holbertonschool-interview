@@ -2,10 +2,14 @@
 """
 0-count Module
 
-This module defines a function `count_words` that queries the Reddit API to retrieve
-the hot posts of a specified subreddit and counts the occurrences of given keywords
-in the titles of these posts. The function prints each keyword and its count in descending
-order of frequency, with alphabetical ordering for words with identical counts.
+This module defines a function `count_words` 
+that queries the Reddit API to retrieve
+the hot posts of a specified subreddit 
+and counts the occurrences of given keywords
+in the titles of these posts. The function prints each 
+keyword and its count in descending
+order of frequency, with alphabetical ordering for words with 
+identical counts.
 
 Usage Example:
     count_words("programming", ["react", "python", "java", "javascript"])
