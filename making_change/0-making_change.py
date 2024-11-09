@@ -1,4 +1,18 @@
 #!/usr/bin/python3
+"""
+This module provides a solution to the coin change problem, where the goal
+is to determine the fewest number of coins needed to reach a specified total
+amount using an infinite supply of given coin denominations.
+
+The makeChange function within this module utilizes a greedy approach by
+selecting the largest denomination first, thus reducing the number of coins needed.
+
+Functions:
+    makeChange(coins, total): Returns the minimum number of coins needed
+    to reach the total, or -1 if it's not possible.
+"""
+
+
 def makeChange(coins, total):
     """
     Determines the fewest number of coins needed to meet a given total amount.
