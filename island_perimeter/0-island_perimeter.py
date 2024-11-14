@@ -12,17 +12,6 @@ surrounded by water, and there is only one island (or nothing).
 def island_perimeter(grid):
     """
     Calculates the perimeter of the island represented in the grid.
-
-    Args:
-        grid (list of list of integers): A rectangular grid where:
-            - 0 represents water
-            - 1 represents land
-            - Each cell is square, with a side length of 1
-            - Cells are connected horizontally or vertically (not diagonally)
-            - Grid dimensions do not exceed 100x100
-
-    Returns:
-        int: The perimeter of the island.
     """
     perimeter = 0
     rows = len(grid)
