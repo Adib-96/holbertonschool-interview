@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 
-"""
-This module provides a function to calculate the perimeter of an island in a grid.
-"""
-
+""" Function to find perimiter of an island """
 
 def island_perimeter(grid):
     """
-    Calculates the perimeter of the island represented in the grid.
+    Input: List of Lists
+    Returns: Perimeter of the island
     """
     perimeter = 0
     rows = len(grid)
