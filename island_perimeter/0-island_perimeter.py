@@ -7,7 +7,8 @@ Function to calculate the perimeter of the island described in grid
 def island_perimeter(grid):
     """
     Function that returns the perimeter of the island described in grid.
-    The grid is a list of lists of integers where 1 represents land and 0 represents water.
+    The grid is a list of lists of integers where 1 represents land,
+    and 0 represents water.
 
     Args:
     grid (list of list of int): A grid representing the island.
